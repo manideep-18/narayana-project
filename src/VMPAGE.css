@@ -1,0 +1,44 @@
+/* HomePage.css */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .homePageContainer {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #3498db, #2c3e50); /* Background gradient colors */
+    color: #fff;
+  }
+  
+  .centeredContent {
+    text-align: center;
+  }
+  
+  .inputContainer {
+    margin-bottom: 20px;
+  }
+  
+  .inputContainer input {
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .buttonContainer button {
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .buttonContainer button:last-child {
+    margin-right: 0;
+  }
+  

@@ -1,0 +1,52 @@
+.parentWrapper{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputsWrapper{
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    margin: auto;
+}
+
+.customInput{
+    padding: 10px;
+    width: 50%;
+}
+
+.usersSelect{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.loginBtn{
+    margin-top: 30px;
+    padding: 10px;
+    position: relative;
+    left: calc(100% / 2);
+}
+
+.category{
+    width: 55%;
+    padding: 10px;
+}
+
+.donationText{
+    color: #7fff00;
+}
+
+.logoImg{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: calc(100% / 2 - 215px - 100px);
+    left: calc(100% / 2 - 100px);
+    border-radius: 15px;
+}
