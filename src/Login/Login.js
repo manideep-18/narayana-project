@@ -10,7 +10,7 @@ const LoginForm = () => {
   });
 
   const [loginSuccess, setLoginSuccess] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -41,7 +41,7 @@ const LoginForm = () => {
       localStorage.setItem("access_token", token);
       // Update the isLoggedIn state
       setLoginSuccess(true);
-      navigate("/vmpage")
+      navigate("/vmpage");
     } else {
       setLoginSuccess(false);
     }
@@ -49,7 +49,12 @@ const LoginForm = () => {
 
   return (
     <div className="login-container">
+      {/* <img
+        src="https://static.theprint.in/wp-content/uploads/2021/07/tanla-platforms-limited-to-announce-first-quarter-financial-results-on-july-22-2021.jpg"
+        alt="logo"
+      /> */}
       <Form className="login-form" onSubmit={handleSubmit}>
+        <div className="bgWrapper" />
         <h1>Login Form</h1>
         <Form.Group controlId="formEmail">
           <Form.Label>Email Address</Form.Label>
@@ -76,10 +81,15 @@ const LoginForm = () => {
         </Form.Group>
 
         <Form.Group controlId="formPingCheck">
-          <div style={{textAlign:"center",padding:"20px"}}>
-          <Button variant="primary" type="submit" >
-            Login
-          </Button>
+          <div style={{ textAlign: "center", padding: "20px" }}>
+            <Button
+              style={{ backgroundColor: "rgb(229, 9, 20)", border: "unset" }}
+              className="loginBtn"
+              variant="primary"
+              type="submit"
+            >
+              Login
+            </Button>
           </div>
           {loginSuccess === false && (
             <Alert variant="danger" className="mt-3">

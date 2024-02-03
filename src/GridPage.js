@@ -1,5 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@material-ui/core';
+import React, { useEffect, useState } from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@material-ui/core";
 
 const TableFormExample = () => {
   const [formData, setFormData] = useState([]);
@@ -10,18 +23,19 @@ const TableFormExample = () => {
   const [auditMessage, setAuditMessage] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem('access_token');
-    setAccessToken(token)
-    fetch("http://20.235.244.160:9781/cis/hostconfig/",
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        }
-      })
+    const token = localStorage.getItem("access_token");
+    setAccessToken(token);
+    fetch("http://20.235.244.160:9781/cis/hostconfig/", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
-        setFormData(data["results"]);
+        if (data["results"]) {
+          setFormData(data["results"]);
+        }
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -30,17 +44,17 @@ const TableFormExample = () => {
     if (formData.length === 0) {
       return null; // Return null or some default content when formData is empty
     }
-    const headers = Object.keys(formData[0]);
+    const headers = formData.length && Object.keys(formData[0]);
     return (
       <TableHead>
         <TableRow>
           {headers.map((header) => (
-            <TableCell key={header} style={{ fontWeight: 'bold' }}>
+            <TableCell key={header} style={{ fontWeight: "bold" }}>
               {header}
             </TableCell>
           ))}
-          <TableCell style={{ fontWeight: 'bold' }}>Remediate</TableCell>
-          <TableCell style={{ fontWeight: 'bold' }}>Audit</TableCell>
+          <TableCell style={{ fontWeight: "bold" }}>Remediate</TableCell>
+          <TableCell style={{ fontWeight: "bold" }}>Audit</TableCell>
         </TableRow>
       </TableHead>
     );
@@ -56,12 +70,24 @@ const TableFormExample = () => {
             ))}
 
             <TableCell>
-              <Button variant="contained" style={{ backgroundColor: 'black', color: 'white' }} onClick={() => { handleScanCheck(row.id, 1) }}>
+              <Button
+                variant="contained"
+                style={{ backgroundColor: "black", color: "white" }}
+                onClick={() => {
+                  handleScanCheck(row.id, 1);
+                }}
+              >
                 Audit
               </Button>
             </TableCell>
             <TableCell>
-              <Button variant="contained" style={{ backgroundColor: 'black', color: 'white' }} onClick={() => { handleScanCheck(row.id, 2) }}>
+              <Button
+                variant="contained"
+                style={{ backgroundColor: "black", color: "white" }}
+                onClick={() => {
+                  handleScanCheck(row.id, 2);
+                }}
+              >
                 Remediate
               </Button>
             </TableCell>
@@ -80,17 +106,20 @@ const TableFormExample = () => {
         setRemidateModal(true);
         setAuditModal(false);
       }
-      const response = await fetch('http://20.235.244.160:9781/cis/hostconfig/operation/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify({
-          host_id: hostID,
-          operation: operation,
-        }),
-      });
+      const response = await fetch(
+        "http://20.235.244.160:9781/cis/hostconfig/operation/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify({
+            host_id: hostID,
+            operation: operation,
+          }),
+        }
+      );
 
       if (response.status === 200) {
         const responseData = await response.json();
@@ -100,10 +129,10 @@ const TableFormExample = () => {
           setRemediateMessage(responseData["message"]);
         }
       } else {
-        console.error('Audit API call failed:', response.statusText);
+        console.error("Audit API call failed:", response.statusText);
       }
     } catch (error) {
-      console.error('Error during Audit API call:', error);
+      console.error("Error during Audit API call:", error);
     }
   };
 

@@ -7,7 +7,7 @@
   }
   
   .login-form {
-    width: 300px;
+    width: 500px;
     height: 500px; /* Set your desired fixed height */
     padding: 20px;
     background-color: white;
@@ -17,5 +17,24 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background: url(https://static.theprint.in/wp-content/uploads/2021/07/tanla-platforms-limited-to-announce-first-quarter-financial-results-on-july-22-2021.jpg);
+    background-repeat: no-repeat;
+    color: white;
+    background-position: center;
+    background-size: 100% 100%;
   }
   
+  .bgWrapper{
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.loginBtn{
+  background-color: rgb(229, 9, 20);
+}
