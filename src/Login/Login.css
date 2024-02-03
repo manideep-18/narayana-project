@@ -1,0 +1,21 @@
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.aninews.in%2Fnews%2Fbusiness%2Fbusiness%2Ftanla-announces-fourth-quarter-and-full-year-21-22-results20220430114907&psig=AOvVaw3XaD5Bq1Jg1RS8M67Fo5oe&ust=1707038120546000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCMie09jqjoQDFQAAAAAdAAAAABAE');
+  }
+  
+  .login-form {
+    width: 300px;
+    height: 500px; /* Set your desired fixed height */
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
